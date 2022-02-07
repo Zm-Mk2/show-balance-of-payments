@@ -1,0 +1,2 @@
+class Incomedata < ApplicationRecord
+end
