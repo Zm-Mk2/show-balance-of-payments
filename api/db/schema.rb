@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 2022_01_23_073728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "incomedata", force: :cascade do |t|
-    t.date "date", null: false
-    t.string "content"
-    t.integer "amount", null: false
-    t.string "litem", null: false
-    t.string "mitem"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "incomedatas", force: :cascade do |t|
     t.date "date", null: false
     t.string "content"

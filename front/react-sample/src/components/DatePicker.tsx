@@ -47,7 +47,7 @@ export const DatePicker = <T,>({
                         />
                     )}
                 />
-                {error}
+                <small>{error}</small>
             </div>
             {/*console.log(`contents=${label},${name},${error},${anotherdate}`)*/}
         </>

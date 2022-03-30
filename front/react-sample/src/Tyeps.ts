@@ -1,9 +1,7 @@
 export type IncomeData = {
-    date: string
-    content: string
-    amount: number
+    yearmonth: string
+    amounts: number
     litem: string
-    mitem: string
 }
 
 export type Datas = {

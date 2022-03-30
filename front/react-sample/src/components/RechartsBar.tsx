@@ -28,14 +28,14 @@ export const RechartsBar = ({ datas }: Datas) => {
 
     const setBalanceInfo = (datas: IncomeData[]) => {
         const dateGroupList: associativeArray[] = []
-        //連想配列{'date': 日付, '${大項目名}'：金額}を返す
+        //連想配列{'yearMonth': 年月, '${大項目名}'：金額}を返す
         //console.log("start")
         datas.map((data) => {
-            const foundIndex: number = dateGroupList.findIndex(({date}) => (date === data.date.substr(0,7)))
+            const foundIndex: number = dateGroupList.findIndex(({yearmonth}) => (yearmonth === data.yearmonth))
             if (foundIndex > -1) {
-                dateGroupList[foundIndex][data.litem] = Math.abs(data.amount) // 絶対値
+                dateGroupList[foundIndex][data.litem] = Math.abs(data.amounts) // 絶対値
             } else {
-                dateGroupList.push({'date': data.date.substr(0,7), [data.litem]: Math.abs(data.amount)}) // 絶対値
+                dateGroupList.push({'yearmonth': data.yearmonth, [data.litem]: Math.abs(data.amounts)}) // 絶対値
             }   
         })
         //console.log("end")
@@ -48,7 +48,7 @@ export const RechartsBar = ({ datas }: Datas) => {
         let litemBarList: litemBarList[] = []
         // 正負を判定し金額区分を持つリストの作成
         datas.map(function(data) {
-            let amountdivision = data.amount < 0 ? negativeConst : positiveConst
+            let amountdivision = data.amounts < 0 ? negativeConst : positiveConst
             litemBarList.push({'litem': data.litem, 'amountdivison': amountdivision})
         })
         // 重複行削除
@@ -68,7 +68,7 @@ export const RechartsBar = ({ datas }: Datas) => {
                 data={setBalanceInfo(datas)}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
+                <XAxis dataKey="yearmonth" />
                 <YAxis />
                 <Tooltip />
                 <Legend />

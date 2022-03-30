@@ -1,4 +1,4 @@
-FROM ruby:3.0
+FROM ruby:3.0.2
 RUN apt-get update -qq && apt-get install -y nodejs mariadb-client
 RUN mkdir /myapp
 WORKDIR /myapp
@@ -12,6 +12,8 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
+#↓debug
+#EXPOSE 3000 1234 26162
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
